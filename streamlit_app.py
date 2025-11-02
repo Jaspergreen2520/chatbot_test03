@@ -25,11 +25,13 @@ else:
         with st.chat_message("user"):
             st.markdown(prompt)
 
-        # Geminiのチャット履歴を辞書型でまとめる
-        history = [
-            {"role": m["role"], "parts": [m["content"]]}
-            for m in st.session_state.messages
-        ]
+        # Gemini用のhistory形式
+        history = []
+        for m in st.session_state.messages:
+            if m["role"] == "user":
+                history.append({"role": "user", "parts": [m["content"]]})
+            elif m["role"] == "assistant":
+                history.append({"role": "model", "parts": [m["content"]]})
 
         model = genai.GenerativeModel("gemini-2.5-pro")
         chat = model.start_chat(history=history)
