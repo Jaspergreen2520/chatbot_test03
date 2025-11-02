@@ -1,7 +1,7 @@
 import streamlit as st
 import google.generativeai as genai
 
-st.title("💬 Chatbot (Gemini 2.5 Pro)")
+st.title("💬 教えてGemini！")
 st.write(
     "このチャットボットはGoogle Gemini 2.5 Proを使って会話します。"
     "利用するには、Google Gemini APIキーが必要です。APIキーは [Google AI Studio](https://aistudio.google.com/) から取得できます。"
